@@ -9,6 +9,14 @@ Firebase Admin Console is a centralized platform for easy viewing and maintenanc
 
 ## Python Flask App and Firestore DB Set Up
 
+To clone this repo and install all the required packages:
+
+```shell
+git clone https://github.com/daqichen/Firebase-admin-console-FlaskAPI.git
+
+pip install -r requirements.txt
+```
+
 Assuming that you already have a Firestore NoSQL database up and running, you can built a CRUD (Create, Read, Update, and Delete) API using Flask in Python. To set up your Firestore DB, here is a <a href="https://medium.com/google-cloud/building-a-flask-python-crud-api-with-cloud-firestore-firebase-and-deploying-on-cloud-run-29a10c502877">Medium article</a> to help you get started. The objective is to allow your front-end application to access data, or documents in a NoSQL context, stored in your Firestore database on Firebase. Below is the set up for <strong>/app.py</strong>.
 
 
