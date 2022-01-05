@@ -192,3 +192,12 @@ def delete():
         return f"An Error Occured: {e}"
 ```
 
+## Deployment on Heroku!!
+
+Now that you have a fully functioning back-end API, it is time to make it accessible beyond your local machine! For back-end, I decided to deploy the API endpoint on <a href="https://realpython.com/flask-by-example-part-1-project-setup/">Heroku</a>. The following shell command creates a <strong>/Procfile</strong> that is necessary for Heroku deployment. The article linked previously has a detailed walk-thru, from creating a Flask App to deployment.
+
+```shell
+echo "web: gunicorn app:app" > Procfile
+```
+
+Congrats, that is a wrap on the back-end part! Head on over to the Front-end Repo [link to be added].
