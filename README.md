@@ -1,6 +1,6 @@
 # Firebase-admin-console-FlaskAPI
 
-Back-end code. <a href="https://firebase-admin-console-api.herokuapp.com/list?collection=Origami&filter_applied=false&difficulty=&low_steps=0&high_steps=1000&order_by=">Deployed</a> on Heroku. A more detailed and more structured guide can be found at this <a href="https://locrian-colt-32b.notion.site/Firebase-Admin-Console-d4bd55aac10245aa8b208871c1eb23ed">Notion Notebook</a>.
+Back-end code. Deployed on Heroku. A more detailed and more structured guide can be found at this <a href="https://locrian-colt-32b.notion.site/Firebase-Admin-Console-d4bd55aac10245aa8b208871c1eb23ed">Notion Notebook</a>.
 
 ## Overview
 
