@@ -4,7 +4,7 @@ Back-end code. <a href="https://firebase-admin-console-api.herokuapp.com/list?co
 
 ## Overview
 
-Firebase Admin Console is a centralized platform for easy viewing and maintenance of Firestore database, the application's front-end is built in ReactJS, and the back-end API is a Python Flask app. This application serves as a starting template for developers to customize, build, and even deploy the desired admin console for their DB. 
+Firebase Admin Console is a centralized platform for easy viewing and maintenance of Firestore database, the application's [front-end](https://github.com/daqichen/Firebase_Admin_Console_UI) is built in ReactJS, and the [back-end API](https://github.com/daqichen/Firebase-admin-console-FlaskAPI) is a Python Flask app. This application serves as a starting template for developers to customize, build, and even deploy the desired admin console for their DB. 
 
 
 ## Python Flask App and Firestore DB Set Up
@@ -17,7 +17,7 @@ git clone https://github.com/daqichen/Firebase-admin-console-FlaskAPI.git
 pip install -r requirements.txt
 ```
 
-Assuming that you already have a Firestore NoSQL database up and running, you can built a CRUD (Create, Read, Update, and Delete) API using Flask in Python. To set up your Firestore DB, here is a <a href="https://medium.com/google-cloud/building-a-flask-python-crud-api-with-cloud-firestore-firebase-and-deploying-on-cloud-run-29a10c502877">Medium article</a> to help you get started. The objective is to allow your front-end application to access data, or documents in a NoSQL context, stored in your Firestore database on Firebase. Below is the set up for <strong>/app.py</strong>.
+Assuming that you already have a Firestore NoSQL database up and running, you can built a CRUD (Create, Read, Update, and Delete) API using Flask in Python. To set up your Firestore DB, here is a <a href="https://medium.com/google-cloud/building-a-flask-python-crud-api-with-cloud-firestore-firebase-and-deploying-on-cloud-run-29a10c502877">Medium article</a> to help you get started. The objective is to allow your front-end application to access data, or documents in a NoSQL context, stored in your Firestore database on Firebase. Below is the set up for `/app.py`.
 
 
 ```python
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     app.run(threaded=True, host='0.0.0.0', port=port)
 ```
 
-All the necessary libraries required are listed in <strong>/requirement.txt</strong>.
+All the necessary libraries required are listed in `/requirement.txt`.
 
 ```plaintext
 CacheControl==0.12.10
@@ -68,7 +68,7 @@ gunicorn==20.0.4
 
 ## CRUD Requests
 
-Create, Read, Update, and Delete (CRUD) are the basic four back-end operations you should be able to execute upon the DB. And one of the most basic operations you might want to perform is to <strong>READ</strong> and view all the documents in your DB (in NoSQL DB, datapoints are referred to as "documents"). This can also act as a sanity check for the configuration in your Flask app to connect with your Firestore DB.
+Create, Read, Update, and Delete (CRUD) are the basic four back-end operations you should be able to execute upon the DB. And one of the most basic operations you might want to perform is to `READ` and view all the documents in your DB (in NoSQL DB, datapoints are referred to as "documents"). This can also act as a sanity check for the configuration in your Flask app to connect with your Firestore DB.
 
 ```python
 @app.route('/list', methods=['GET'])
@@ -87,7 +87,7 @@ def read():
         return jsonify(all_dirs), 200
 ```
 
-Once you run your flask app, you can navigate to the port it is running on and navigate to PORT_URL/list, the documents should be displayed in JSON format. Now that you can access the existing documents, it's time to implement <strong>CREATE</strong>.
+Once you run your flask app, you can navigate to the port it is running on and navigate to PORT_URL/list, the documents should be displayed in JSON format. Now that you can access the existing documents, it's time to implement `CREATE`.
 
 ```python
 from datamodel.origamimodule import Origami
@@ -111,7 +111,7 @@ def create():
         return f"An Error Occured: {e}"
 ```
 
-You probably noticed the import statement for a module named "Origami". I have dedicated a <a href="https://locrian-colt-32b.notion.site/Better-alternative-Fireclass-acde50619f074c358f0f99461b6f1f8b">page</a> on Notion with more details on utilizing dataclasses in Python and its compatibility with JSON to simplify creating new documents and standardizing the set of fields each document has. Meanwhile, below is the implementation code for <strong>/origamimodule.py</strong>.
+You probably noticed the import statement for a module named "Origami". I have dedicated a <a href="https://locrian-colt-32b.notion.site/Better-alternative-Fireclass-acde50619f074c358f0f99461b6f1f8b">page</a> on Notion with more details on utilizing dataclasses in Python and its compatibility with JSON to simplify creating new documents and standardizing the set of fields each document has. Meanwhile, below is the implementation code for `/origamimodule.py`.
 
 ```python
 from dataclasses import dataclass
@@ -130,7 +130,7 @@ class Origami:
     img:str
 ```
 
-Next is <strong>UPDATE</strong>, which is very similar to CREATE. The main distinction is that UPDATE requires you to know the corresponding document ID of which you are attempting to update. In Firestore DB, you can either auto-generate IDs or assign them yourself; here in this template, they are auto-generated.
+Next is `UPDATE`, which is very similar to CREATE. The main distinction is that UPDATE requires you to know the corresponding document ID of which you are attempting to update. In Firestore DB, you can either auto-generate IDs or assign them yourself; here in this template, they are auto-generated.
 
 ```python
 @app.route('/update', methods=['POST', 'PUT'])
@@ -168,7 +168,7 @@ def update():
     except Exception as e:
         return f"An Error Occured: {e}"
 ```
-Last but not least, is <strong>DELETE</strong>. 
+Last but not least, is `DELETE`. 
 
 ```python
 @app.route('/delete', methods=['GET', 'DELETE'])
@@ -202,7 +202,7 @@ def delete():
 
 ## Deployment on Heroku!!
 
-Now that you have a fully functioning back-end API, it is time to make it accessible beyond your local machine! For back-end, I decided to deploy the API endpoint on <a href="https://realpython.com/flask-by-example-part-1-project-setup/">Heroku</a>. The following shell command creates a <strong>/Procfile</strong> that is necessary for Heroku deployment. The article linked previously has a detailed walk-thru, from creating a Flask App to deployment.
+Now that you have a fully functioning back-end API, it is time to make it accessible beyond your local machine! For back-end, I decided to deploy the API endpoint on <a href="https://realpython.com/flask-by-example-part-1-project-setup/">Heroku</a>. The following shell command creates a `/Procfile` that is necessary for Heroku deployment. The article linked previously has a detailed walk-thru, from creating a Flask App to deployment.
 
 ```shell
 echo "web: gunicorn app:app" > Procfile
